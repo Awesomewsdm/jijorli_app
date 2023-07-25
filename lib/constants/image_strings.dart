@@ -1,0 +1,10 @@
+const tAppIcon = "assets/images/ai_robot_logo.png";
+const tOnboardingImage1 = "assets/images/Frame 33.png";
+const tMicrophone = "assets/svg/microphone-2.svg";
+const tSend = "assets/svg/send.svg";
+const tTranslate = "assets/svg/translate.svg";
+const tVolume = "assets/svg/volume-high.svg";
+const tExport = "assets/svg/export.svg";
+const tStar = "assets/svg/Star.svg";
+const tPen = "assets/svg/pen.svg";
+const tList = "assets/svg/list.svg";
