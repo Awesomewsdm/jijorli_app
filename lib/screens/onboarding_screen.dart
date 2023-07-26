@@ -19,10 +19,10 @@ class OnboardingScreen extends StatelessWidget {
               width: size.width,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                    child: Container(
-                      child: const Column(
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40.0),
+                    child: SizedBox(
+                      child: Column(
                         children: [
                           Text(
                             "Your AI Assistant",
@@ -51,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => ChatScreen());
+                      Get.to(() => const ChatScreen());
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20),

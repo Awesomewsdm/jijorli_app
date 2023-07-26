@@ -1,4 +1,7 @@
+import 'package:get/get.dart';
 import 'package:jijorli_app/constants/image_strings.dart';
+import 'package:jijorli_app/controllers.dart/controller.dart';
+import 'package:jijorli_app/models/suggestion_model.dart';
 
 class PromptModel {
   final String title;
@@ -8,6 +11,25 @@ class PromptModel {
 
   PromptModel(this.title, this.prompt, this.imageString, this.category);
 }
+
+ChatController chatController = Get.put(ChatController());
+
+final List<SuggestedQuestionModel> suggestedQuestions = [
+  SuggestedQuestionModel(
+    prompt: "Explain Quantum physics",
+    onTap: () {
+      chatController.promptController.text = "Explain Quantum physics";
+    },
+  ),
+  SuggestedQuestionModel(
+    prompt: "What are wormholes explain like I am 5",
+    onTap: () {
+      chatController.promptController.text =
+          "What are wormholes explain like I am 5";
+    },
+  ),
+  // Add other suggested questions here...
+];
 
 final prompModel = [
   PromptModel("Write an article",

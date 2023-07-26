@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:jijorli_app/constants/image_strings.dart';
 import 'package:jijorli_app/constants/styles.dart';
+import 'package:jijorli_app/controllers.dart/controller.dart';
 import 'package:jijorli_app/models/example_promp_model.dart';
+import 'package:jijorli_app/models/suggestion_model.dart';
 import 'package:jijorli_app/screens/explore_screen.dart';
 import 'package:jijorli_app/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
@@ -11,11 +13,11 @@ import 'package:provider/provider.dart';
 import '../models/chat_model.dart';
 
 class ChatScreen extends StatelessWidget {
-  ChatScreen({Key? key, this.promptModel})
+  const ChatScreen({Key? key, this.promptModel})
       : super(key: key); // Corrected the constructor
 
-  final TextEditingController chatController = TextEditingController();
   final PromptModel? promptModel;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -105,7 +107,7 @@ class ChatScreen extends StatelessWidget {
                         Expanded(
                           child: TextFormField(
                             onFieldSubmitted: (e) {},
-                            controller: chatController,
+                            controller: chatController.promptController,
                             style: const TextStyle(
                               color: Colors.black,
                             ),
@@ -137,9 +139,9 @@ class ChatScreen extends StatelessWidget {
                                     onTap: () {
                                       context
                                           .read<ChatModel>()
-                                          .sendPromptRequest(
-                                              chatController.text);
-                                      chatController.clear();
+                                          .sendPromptRequest(chatController
+                                              .promptController.text);
+                                      chatController.promptController.clear();
                                     },
                                     child: SvgPicture.asset(
                                       tSend,
