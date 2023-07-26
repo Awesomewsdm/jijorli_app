@@ -19,6 +19,7 @@ dependencies:
   in_app_purchase: ^3.1.7
   sqflite: ^2.2.8+4
   image_picker: ^1.0.1
+  dart_openai: ^4.0.0
 
 dev_dependencies:
   flutter_test:
