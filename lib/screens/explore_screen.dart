@@ -19,7 +19,6 @@ class ExploreScreen extends StatefulWidget {
 
 class _ExploreScreenState extends State<ExploreScreen> {
   final List<String> categories = [
-    "All",
     "Writing",
     "Entertainment",
     "Coding",
@@ -27,7 +26,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     "Health & Fitness"
   ];
 
-  String selectedCategory = "All";
+  String selectedCategory = "Writing";
 
   int currentIndex = 0;
   final PageController pageController = PageController();
@@ -78,9 +77,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               ),
               Expanded(
                 child: PageView(
-                  scrollDirection: selectedCategory == "All"
-                      ? Axis.horizontal
-                      : Axis.vertical,
+                  scrollDirection: Axis.vertical,
                   controller: pageController,
                   onPageChanged: (index) {
                     setState(() {
@@ -91,48 +88,34 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     ListView(
                       children: categories
                           .map(
-                            (category) => selectedCategory ==
-                                    "All" // Check if the selected category matches the current category
+                            (category) => selectedCategory == category
                                 ? CategoryWidget(
-                                    widget: Row(
-                                      children: List.generate(
-                                        4,
-                                        (index) => CategoryCardWidget(
-                                          imageString: tPen,
-                                          title: "Write an article",
-                                          label:
-                                              "Generate well-written articles on any topic you want.",
-                                          // color1: 0xFFFFEAEA,
-                                          color2: 0xFFE76C6C,
-                                        ),
-                                      ),
+                                    widget: Column(
+                                      children: [
+                                        Wrap(children: [
+                                          CategoryCardWidget(
+                                            imageString: tPen,
+                                            title: "Write an article",
+                                            label:
+                                                "Generate well-written articles on any topic you want.",
+                                            // color1: 0xFFFFEAEA,
+                                            color2: 0xFFE76C6C,
+                                          ),
+                                          CategoryCardWidget(
+                                            imageString: tList,
+                                            title: "Write a poem",
+                                            label:
+                                                "Generate well-written articles on any topic you want.",
+                                            // color1: 0xFFFFEAEA,
+                                            color2: 0xFFE76C6C,
+                                          )
+                                        ]),
+                                      ],
                                     ),
-                                    scrollDirection: Axis.horizontal,
+                                    scrollDirection: Axis.vertical,
                                     category: category,
                                   )
-                                : selectedCategory == category
-                                    ? CategoryWidget(
-                                        widget: Column(
-                                          children: [
-                                            Wrap(
-                                              children: List.generate(
-                                                  8,
-                                                  (index) => CategoryCardWidget(
-                                                        imageString: tPen,
-                                                        title:
-                                                            "Write an article",
-                                                        label:
-                                                            "Generate well-written articles on any topic you want.",
-                                                        // color1: 0xFFFFEAEA,
-                                                        color2: 0xFFE76C6C,
-                                                      )),
-                                            ),
-                                          ],
-                                        ),
-                                        scrollDirection: Axis.vertical,
-                                        category: category,
-                                      )
-                                    : const SizedBox(), // Hide content for non-selected categories
+                                : const SizedBox(), // Hide content for non-selected categories
                           )
                           .toList(),
                     ),

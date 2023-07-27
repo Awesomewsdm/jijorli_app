@@ -3,9 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:jijorli_app/constants/image_strings.dart';
 import 'package:jijorli_app/constants/styles.dart';
-import 'package:jijorli_app/controllers.dart/controller.dart';
 import 'package:jijorli_app/models/example_promp_model.dart';
-import 'package:jijorli_app/models/suggestion_model.dart';
 import 'package:jijorli_app/screens/explore_screen.dart';
 import 'package:jijorli_app/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +11,12 @@ import 'package:provider/provider.dart';
 import '../models/chat_model.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key, this.promptModel})
+  ChatScreen({Key? key, this.promptModel})
       : super(key: key); // Corrected the constructor
 
   final PromptModel? promptModel;
+
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +41,7 @@ class ChatScreen extends StatelessWidget {
           return Stack(
             children: [
               ListView(
+                controller: _scrollController,
                 children: [
                   if (messages.isEmpty)
                     const SizedBox(
@@ -89,7 +90,7 @@ class ChatScreen extends StatelessWidget {
                     )
                   else
                     ...messages,
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 80),
                 ],
               ),
               Align(
@@ -141,6 +142,7 @@ class ChatScreen extends StatelessWidget {
                                           .read<ChatModel>()
                                           .sendPromptRequest(chatController
                                               .promptController.text);
+
                                       chatController.promptController.clear();
                                     },
                                     child: SvgPicture.asset(
@@ -165,6 +167,16 @@ class ChatScreen extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  void scrollToBottom() {
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 }
 

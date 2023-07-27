@@ -18,6 +18,8 @@ class MainApp extends StatelessWidget {
   }
 }
 
+//  object-oriented design, algorithm design, data structures, problem solving and complexity analysis
+
 // • 5+ years of experience working on products or projects that have gone to production 
 
 // • Experience in product development 

@@ -51,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => const ChatScreen());
+                      Get.to(() => ChatScreen());
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 20),

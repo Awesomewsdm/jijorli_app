@@ -1,2 +1,2 @@
-const apiKey = "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";
+const apiKey = "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";
 const endpoint = "https://api.openai.com/v1/";
