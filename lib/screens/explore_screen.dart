@@ -108,6 +108,22 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                                 "Generate well-written articles on any topic you want.",
                                             // color1: 0xFFFFEAEA,
                                             color2: 0xFFE76C6C,
+                                          ),
+                                          CategoryCardWidget(
+                                            imageString: tList,
+                                            title: "Write a short story",
+                                            label:
+                                                "Write a short bed-time story",
+                                            // color1: 0xFFFFEAEA,
+                                            color2: 0xFFE76C6C,
+                                          ),
+                                          CategoryCardWidget(
+                                            imageString: tList,
+                                            title: "Write a poem",
+                                            label:
+                                                "Generate well-written articles on any topic you want.",
+                                            // color1: 0xFFFFEAEA,
+                                            color2: 0xFFE76C6C,
                                           )
                                         ]),
                                       ],

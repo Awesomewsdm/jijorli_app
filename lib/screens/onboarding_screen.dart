@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:jijorli_app/constants/image_strings.dart';
-import 'package:jijorli_app/screens/chat_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -49,41 +47,64 @@ class OnboardingScreen extends StatelessWidget {
                   const SizedBox(height: 70),
                   Image.asset(tOnboardingImage1),
                   const Spacer(),
-                  GestureDetector(
+                  ButtonWidget(
+                    label: "Continue",
                     onTap: () {
-                      Get.to(() => ChatScreen());
+                      // Get.to(
+                      //   () =>
+                      //       //  SeatBookingScreen(
+                      //       //       model: economyseatLayout,
+                      //       //     )
+                      //       // const MyApp(),
+                      // );
                     },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blue,
-                      ),
-                      child: const Row(
-                        children: [
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                "Continue",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
                 ],
               )),
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonWidget extends StatelessWidget {
+  const ButtonWidget({
+    super.key,
+    this.onTap,
+    required this.label,
+  });
+  final void Function()? onTap;
+  final String label;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        height: 45,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.blue,
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Center(
+                child: Text(
+                  label,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+            const Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+            ),
+          ],
         ),
       ),
     );

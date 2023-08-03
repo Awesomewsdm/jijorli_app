@@ -9,7 +9,6 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return const GetMaterialApp(
@@ -39,7 +38,6 @@ class MainApp extends StatelessWidget {
 // • Solid understanding of the full mobile development life cycle. 
 
 // • Understanding of Scrum and team management. 
-
 // • Proficient understanding of the Android and iOS SDKs 
 
 // • Experience with the architecture and hands-on expertise on mobile technology systems using Swift/Java/Flutter 
