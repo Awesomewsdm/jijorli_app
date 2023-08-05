@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:jijorli_app/constants/image_strings.dart';
+import 'package:jijorli_app/screens/chat_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -50,13 +52,13 @@ class OnboardingScreen extends StatelessWidget {
                   ButtonWidget(
                     label: "Continue",
                     onTap: () {
-                      // Get.to(
-                      //   () =>
-                      //       //  SeatBookingScreen(
-                      //       //       model: economyseatLayout,
-                      //       //     )
-                      //       // const MyApp(),
-                      // );
+                      Get.to(
+                        () =>
+                            //       //  SeatBookingScreen(
+                            //       //       model: economyseatLayout,
+                            //       //     )
+                            ChatScreen(),
+                      );
                     },
                   ),
                 ],

@@ -17,6 +17,7 @@ class MainApp extends StatelessWidget {
   }
 }
 
+
 //  object-oriented design, algorithm design, data structures, problem solving and complexity analysis
 
 // • 5+ years of experience working on products or projects that have gone to production 
@@ -46,4 +47,4 @@ class MainApp extends StatelessWidget {
 
 // 55514417.
 // 020 552 0518
-// +233 56 142 2378
+// +233 56 142 2378 
