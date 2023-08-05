@@ -4,20 +4,32 @@ import 'package:get/get.dart';
 import 'package:jijorli_app/constants/image_strings.dart';
 import 'package:jijorli_app/constants/styles.dart';
 import 'package:jijorli_app/models/example_promp_model.dart';
-import 'package:jijorli_app/screens/onboarding_screen.dart';
+import 'package:jijorli_app/screens/explore_screen.dart';
 import 'package:jijorli_app/screens/seat_booking_screen.dart';
 import 'package:jijorli_app/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../models/chat_model.dart';
 
-class ChatScreen extends StatelessWidget {
-  ChatScreen({Key? key, this.promptModel})
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({Key? key, this.promptModel})
       : super(key: key); // Corrected the constructor
 
   final PromptModel? promptModel;
 
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _scrollController = ScrollController();
+  String initialVallue = "";
+
+  @override
+  void initState() {
+    super.initState();
+    initialVallue = widget.promptModel!.prompt;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +39,13 @@ class ChatScreen extends StatelessWidget {
         widget: Row(
           children: [
             GestureDetector(
-                onTap: () {
-                  Get.to(() {
-                    const SeatBookingScreen();
-                  });
-                },
-                child: SvgPicture.asset(tVolume)),
+              onTap: () {
+                Get.to(() {
+                  const SeatBookingScreen();
+                });
+              },
+              child: SvgPicture.asset(tVolume),
+            ),
             const SizedBox(
               width: 10,
             ),
@@ -113,11 +126,9 @@ class ChatScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         GestureDetector(
-                          onTap: () {
-                            Get.to(() {
-                              const SeatBookingScreen();
-                            });
-                          },
+                          onTap: () => Get.to(
+                            () => const ExploreScreen(),
+                          ),
                           child: SvgPicture.asset(
                             tStar,
                             height: 30,
@@ -128,6 +139,11 @@ class ChatScreen extends StatelessWidget {
                         Expanded(
                           child: TextFormField(
                             onFieldSubmitted: (e) {},
+                            onChanged: (value) {
+                              setState(() {
+                                initialVallue = value;
+                              });
+                            },
                             controller: chatController.promptController,
                             style: const TextStyle(
                               color: Colors.black,
@@ -148,26 +164,6 @@ class ChatScreen extends StatelessWidget {
                                       height: 30,
                                       width: 30,
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () => Get.bottomSheet(
-                                      Container(
-                                          color: Colors.amber,
-                                          child: Column(children: [
-                                            const Text(
-                                                "Scan document to extract a text from document and parse it to the chatbot for answers"),
-                                            ButtonWidget(
-                                              label: "Continue",
-                                              onTap: () {
-                                                Get.to(() => ChatScreen());
-                                              },
-                                            ),
-                                          ])),
-                                    ),
-                                    child: const Icon(Icons.document_scanner),
                                   ),
                                   const SizedBox(
                                     width: 10,
